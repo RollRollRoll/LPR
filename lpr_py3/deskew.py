@@ -84,18 +84,18 @@ def fastDeskew(image):
     print("校正角度 h ", skew_h, "v", skew_v)
     img, M = v_rot(image, int((90 - skew_v) * 1.5), image.shape, 60)
     # 测试代码s
-    cv2.imshow("img_v_rot", img)
+    # cv2.imshow("img_v_rot", img)
     # 测试代码e
 
     img = h_rot(img, skew_h)
     # 测试代码s
-    cv2.imshow("img_h_rot", img)
+    # cv2.imshow("img_h_rot", img)
     # 测试代码e
 
     if img.shape[0] > img.shape[1]:
         img = h_rot(img, -90)
         # 测试代码s
-        cv2.imshow("img_h_rot_new", img)
+        # cv2.imshow("img_h_rot_new", img)
         # 测试代码e
 
     deskew = img

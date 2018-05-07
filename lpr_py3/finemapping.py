@@ -69,7 +69,7 @@ def findContoursAndDrawBoundingBox(image_rgb):
     mat = cv2.getPerspectiveTransform(pts_map1, pts_map2)
     image = cv2.warpPerspective(rgb, mat, (136, 36), flags=cv2.INTER_CUBIC)
     # 测试代码s
-    cv2.imshow("image_findContoursAndDrawBoundingBox", image)
+    # cv2.imshow("image_findContoursAndDrawBoundingBox", image)
     # 测试代码e
 
     image, M = deskew.fastDeskew(image)

@@ -109,50 +109,50 @@ def SimpleRecognizePlateByE2E(image):
     for j, plate in enumerate(images):
         plate, rect, origin_plate = plate
         # 测试代码s
-        cv2.imshow("plate"+str(j), plate)
-        cv2.imshow("origin_plate"+str(j), origin_plate)
+        # cv2.imshow("plate"+str(j), plate)
+        # cv2.imshow("origin_plate"+str(j), origin_plate)
         # plate = cv2.cvtColor(plate, cv2.COLOR_RGB2GRAY)
         # 测试代码e
 
         plate = cv2.resize(plate, (136, 36 * 2))
         # 测试代码s
-        cv2.imshow("plate_resize"+str(j), plate)
-        print("plate_resize.shape:", plate.shape)
+        # cv2.imshow("plate_resize"+str(j), plate)
+        # print("plate_resize.shape:", plate.shape)
         # 测试代码e
 
         res, confidence = e2e.recognizeOne(origin_plate)
         # 测试代码s
-        print("old res:", res, "old confidence:", confidence)
+        # print("old res:", res, "old confidence:", confidence)
         t1 = time.time()
         # 测试代码e
 
         ptype = td.SimplePredict(plate)
         # 测试代码s
-        print("ptype:", ptype)
+        # print("ptype:", ptype)
         # 测试代码e
 
         if ptype > 0 and ptype < 5:
             # pass
             plate = cv2.bitwise_not(plate)
             # 测试代码s
-            cv2.imshow("plate_bitwise_not", plate)
+            # cv2.imshow("plate_bitwise_not", plate)
             # 测试代码e
 
         image_rgb = fm.findContoursAndDrawBoundingBox(plate)
         # 测试代码s
-        cv2.imshow("image_rgb_findContoursAndDrawBoundingBox"+str(j), image_rgb)
+        # cv2.imshow("image_rgb_findContoursAndDrawBoundingBox"+str(j), image_rgb)
         # 测试代码e
 
         image_rgb = fv.finemappingVertical(image_rgb)
         # 测试代码s
-        cv2.imshow("image_rgb_finemappingVertical"+str(j), image_rgb)
+        # cv2.imshow("image_rgb_finemappingVertical"+str(j), image_rgb)
         # 测试代码e
 
         # cache.verticalMappingToFolder(image_rgb)
         # cv2.imwrite("./" + str(j) + ".jpg", image_rgb)
         res, confidence = e2e.recognizeOne(image_rgb)
         # 测试代码s
-        print("new res:", res, "new confidence:", confidence)
+        # print("new res:", res, "new confidence:", confidence)
         # 测试代码e
 
         res_set.append([[], res, confidence])
